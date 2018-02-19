@@ -1,31 +1,28 @@
-<h1>Eat Da Burger!</h1>
 
-<div class="not-eaten">
-
+<div class="eaten-line">
+  <h1>Eat Da Burger!</h1>
+    <div class="not-eaten">
+      <img src="../../assets/img/noteaten.jpeg">
+        <h2>Free to eat!</h2> {{#each burgers}} {{#unless devoured}}
+        <div>{{burger_name}}
+            <button id='{{id}}' data="{{burger_name}}" class="devour">Devour It!</button>
+        </div>
+        {{/unless}} {{/each}}
+    </div>
+    <div class="eaten">
+      <img src="../../assets/img/eaten.jpeg">
+        <h2>Already Devoured!</h2> {{#each burgers}} {{#if devoured}}
+        <div>{{burger_name}}
+        </div>
+        {{/if}} {{/each}}
+    </div>
 </div>
-
-<div class="eaten">
-
-</div>
-<br><br>
-
+<br>
+<br>
 <ul>
-  {{#each burgers}}
-    <!-- {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}} -->
-  {{/each}}
 </ul>
-<!-- <h2>Cats that are sleepy!</h2>
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul> -->
-
-<textarea rows="2" columns="4"></textarea>
-<button id="Submit">Submit</button>
-<br><br>
+<textarea rows="2" columns="4" id="newBurger"></textarea>
+<button id="submit">Submit</button>
+<br>
+<br>
 <p>Enter a burger an click Submit!</p>

@@ -1,0 +1,26 @@
+.eaten {
+	float: right;
+	width: 33%;
+	margin: 5%;
+	color: grey;
+}
+
+.not-eaten {
+	float: left;
+	width: 33%;
+	margin: 5%;
+}
+
+.eaten-line {
+	width: 100%;
+	text-align: center;
+}
+
+body {
+	background-color: orange;
+}
+
+img {
+	max-width: 150px;
+	max-height: 150px;
+}

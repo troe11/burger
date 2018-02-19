@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Burgers!</title>
-  <script src="https://code.jquery.com/jquery.js"></script>
+    <meta charset="UTF-8">
+    <title>Burgers!</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/burger_style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
+
 <body>
-  {{{ body }}}
+    {{{ body }}}
 </body>
+<script type="text/javascript">
+$(function() {
+    $('#submit').on('click', function(data) {
+        var name = $('#newBurger').val().trim();
+        var newBurg = {
+            burger_name: name,
+            devoured: 0
+        }
+
+        $.ajax("/api/burgers", {
+            type: 'POST',
+            data: newBurg
+        })
+        location.reload();
+    })
+
+    $('.devour').on('click',function(){
+    	var thisId = $(this).attr('id');
+        
+    	$.ajax("/api/burgers/"+thisId,{
+    		type:"PUT",
+    		data: thisId
+    	})
+
+        location.reload();
+    })
+})
+</script>
+
 </html>

@@ -10,4 +10,5 @@ const connection = mysql.createConnection({
     database: 'burgers_db'
 });
 
+connection.connect();
 module.exports = connection;

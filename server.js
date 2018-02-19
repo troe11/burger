@@ -1,6 +1,9 @@
 var express = require('express');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
+var connection = require('./config/connection.js')
+
+
 
 var app = express();
 
@@ -14,13 +17,15 @@ app.use(bodyParser.json());
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-// Import routes and give the server access to them.
-var routes = require("./controllers/burgers_controller.js");
-
-app.use(routes);
+// Import routes and give the server access to them
 
 app.listen(PORT, function() {
-  console.log("App now listening at localhost:" + PORT);
+    var routes = require("./controllers/burgers_controller.js");
+
+    app.use(routes);
+    console.log("App now listening at localhost:" + PORT);
 });
+// });

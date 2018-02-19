@@ -16,11 +16,17 @@ router.get('/',function(req,res){
 
 router.post('/api/burgers',function(req,res){
 	//the follwoing is pulled from cat activity on 14-handlebars
-	burger.insert(['name','devoured'],
-		[req.body.name,req.body.devoured],function(result){
-			res.json({ id: result.insertID})
-			//not sure how insertID is being created
-		})
+	burger.insert(req.body.burger_name,req.body.devoured,function(result){
+			res.render(result)
+		});
+});
+
+router.put('/api/burgers/:id',function(req,res){	
+	console.log(req.params.id)
+	burger.update(1,req.params.id,function(result){
+		res.render(result)
+	})
 })
+
 
 module.exports = router;
